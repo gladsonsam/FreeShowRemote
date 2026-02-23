@@ -29,6 +29,8 @@
         },
         "NSBonjourServices": ["_freeshow._udp"],
         "NSLocalNetworkUsageDescription": "Allow FreeShow Remote to discover devices on the local network.",
+        "NSCameraUsageDescription": "Allow FreeShow Remote to access your camera for live streaming.",
+        "NSMicrophoneUsageDescription": "Allow FreeShow Remote to access your microphone for live streaming audio.",
         "CFBundleDisplayName": "FreeShow Remote",
         "CFBundleShortVersionString": "1.1.0",
         "CFBundleVersion": "2",

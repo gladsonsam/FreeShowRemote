@@ -16,6 +16,7 @@ import APIScreen from './src/screens/APIScreen'
 import APICategoryScreen from './src/screens/APICategoryScreen'
 import ConnectScreen from './src/screens/ConnectScreen'
 import InterfaceScreen from './src/screens/InterfaceScreen'
+import LiveStreamScreen from './src/screens/LiveStreamScreenWebRTC'
 import WebViewScreen from './src/screens/WebViewScreen'
 
 import * as QuickActions from 'expo-quick-actions'
@@ -77,7 +78,7 @@ const SettingsScreenWrapped = (props: any) => (
 
 // Route definitions for sidebar navigation
 const SIDEBAR_ROUTES = ['Interface', 'Connect', 'Settings'];
-const EXTERNAL_ROUTES = ['WebView', 'APIScreen', 'ConnectionHistory', 'Main'];
+const EXTERNAL_ROUTES = ['WebView', 'APIScreen', 'ConnectionHistory', 'LiveStream', 'Main'];
 
 // Sidebar Layout with content area
 function SidebarLayout() {
@@ -731,6 +732,36 @@ export default Sentry.wrap(function App() {
                 {(props) => (
                   <ErrorBoundary onError={(error, errorInfo) => ErrorLogger.error('ConnectionHistoryScreen Error', 'App', error, { errorInfo })}>
                     <ConnectionHistoryScreen {...props} />
+                  </ErrorBoundary>
+                )}
+              </Stack.Screen>
+
+              <Stack.Screen
+                name="LiveStream"
+                options={{
+                  presentation: 'modal',
+                  headerShown: false,
+                  gestureEnabled: true,
+                  cardOverlayEnabled: true,
+                  cardStyleInterpolator: ({ current, layouts }) => {
+                    return {
+                      cardStyle: {
+                        transform: [
+                          {
+                            translateY: current.progress.interpolate({
+                              inputRange: [0, 1],
+                              outputRange: [layouts.screen.height, 0],
+                            }),
+                          },
+                        ],
+                      },
+                    };
+                  },
+                }}
+              >
+                {(props) => (
+                  <ErrorBoundary onError={(error, errorInfo) => ErrorLogger.error('LiveStreamScreen Error', 'App', error, { errorInfo })}>
+                    <LiveStreamScreen {...props} />
                   </ErrorBoundary>
                 )}
               </Stack.Screen>

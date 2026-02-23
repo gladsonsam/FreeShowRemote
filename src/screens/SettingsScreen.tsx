@@ -267,6 +267,35 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({ navigation }) => {
                 </>
               )}
 
+              {/* Features Section */}
+              <View style={styles.sectionSeparator}>
+                <View style={styles.separatorLine} />
+                <Text style={styles.separatorText}>Features</Text>
+                <View style={styles.separatorLine} />
+              </View>
+
+              {/* Live Stream Section */}
+              <TVFocusable onPress={() => navigation.navigate('LiveStream')}>
+                <View style={styles.settingsCard}>
+                  <TouchableOpacity style={styles.settingItem} onPress={() => navigation.navigate('LiveStream')} activeOpacity={0.7}>
+                    <View style={styles.settingInfo}>
+                      <View style={styles.settingTitleRow}>
+                        <View style={styles.iconContainer}>
+                          <Ionicons name="videocam" size={20} color={FreeShowTheme.colors.secondary} />
+                        </View>
+                        <Text style={styles.settingTitle}>Live Stream Camera</Text>
+                      </View>
+                      <Text style={styles.settingDescription}>
+                        Use your phone as a live streaming camera. Ultra-low latency WebRTC streaming (100-300ms).
+                      </Text>
+                    </View>
+                    <View style={styles.actionIcon}>
+                      <Ionicons name="chevron-forward" size={20} color={FreeShowTheme.colors.secondary} />
+                    </View>
+                  </TouchableOpacity>
+                </View>
+              </TVFocusable>
+
               {/* Section Separator */}
               <View style={styles.sectionSeparator}>
                 <View style={styles.separatorLine} />
